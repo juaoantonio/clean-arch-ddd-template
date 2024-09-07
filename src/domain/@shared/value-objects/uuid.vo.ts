@@ -26,7 +26,7 @@ export class Uuid extends Identifier {
     const isValidUuid = validateUuid(this.value);
 
     if (!isValidUuid || !this.value) {
-      throw new Error("Invalid UUID");
+      throw new Error("UUID inválido");
     }
   }
 }

@@ -10,4 +10,8 @@ export abstract class Entity<ID extends Identifier> {
   public getId(): string {
     return this.id.getValue();
   }
+
+  public equals(entity: Entity<ID>): boolean {
+    return this.id.equals(entity.id);
+  }
 }
