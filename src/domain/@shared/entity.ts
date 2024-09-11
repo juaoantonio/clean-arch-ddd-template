@@ -1,7 +1,10 @@
 import { Identifier } from "@domain/@shared/identifier";
+import { INotification } from "@domain/@shared/validation/notification.interface";
+import { Notification } from "@domain/@shared/validation/notification";
 
 export abstract class Entity<ID extends Identifier> {
   private readonly id: ID;
+  private readonly notification: INotification = new Notification();
 
   protected constructor(id: ID) {
     this.id = id;
