@@ -1,28 +1,28 @@
 import { FieldsErrors } from "./validator-fields.interface";
 
 /**
- * Classe que representa um erro de validação de entidade.
- * Extende a classe nativa Error.
+ * Class representing an entity validation error.
+ * Extends the native Error class.
  */
 export class EntityValidationError extends Error {
   /**
-   * Cria uma instância de EntityValidationError.
+   * Creates an instance of EntityValidationError.
    *
-   * @param {FieldsErrors[]} errors - Lista de erros de validação dos campos.
-   * @param {string} [message="Entidade inválida"] - Mensagem de erro.
+   * @param {FieldsErrors[]} errors - List of field validation errors.
+   * @param {string} [message="Invalid entity"] - Error message.
    */
   constructor(
     public errors: FieldsErrors[],
-    message = "Entidade inválida",
+    message = "Invalid entity",
   ) {
     super(message);
     this.name = "EntityValidationError";
   }
 
   /**
-   * Retorna o número de erros presentes.
+   * Returns the number of errors present.
    *
-   * @returns {number} Quantidade de erros.
+   * @returns {number} Number of errors.
    */
   countErrors(): number {
     return Object.keys(this.errors).length;

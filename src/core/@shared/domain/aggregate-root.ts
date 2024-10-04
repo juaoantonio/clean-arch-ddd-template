@@ -4,35 +4,35 @@ import EventEmitter2 from "eventemitter2";
 import { IDomainEvent } from "./events/domain-event.interface";
 
 /**
- * Classe base para a raiz de agregação no DDD.
- * Estende Entity e gerencia eventos de domínio associados à agregação.
+ * Base class for the aggregate root in DDD.
+ * Extends Entity and manages domain events associated with the aggregate.
  *
- * @template ID - Tipo do identificador que deve estender Identifier.
+ * @template ID - Type of the identifier which must extend Identifier.
  */
 export abstract class AggregateRoot<ID extends Identifier> extends Entity<ID> {
   /**
-   * Conjunto de eventos de domínio que ocorreram na agregação.
+   * Set of domain events that occurred in the aggregate.
    */
   public events: Set<IDomainEvent> = new Set<IDomainEvent>();
 
   /**
-   * Instância local do EventEmitter2 para gerenciamento de eventos internos.
+   * Local instance of EventEmitter2 for managing internal events.
    */
   private readonly localMediator = new EventEmitter2();
 
   /**
-   * Cria uma nova instância de AggregateRoot.
+   * Creates a new instance of AggregateRoot.
    *
-   * @param {ID} id - Identificador único da agregação.
+   * @param {ID} id - Unique identifier of the aggregate.
    */
   constructor(id: ID) {
     super(id);
   }
 
   /**
-   * Aplica um evento de domínio à agregação.
+   * Applies a domain event to the aggregate.
    *
-   * @param {IDomainEvent} event - Evento de domínio a ser aplicado.
+   * @param {IDomainEvent} event - The domain event to be applied.
    */
   public applyEvent(event: IDomainEvent) {
     this.events.add(event);
@@ -40,10 +40,10 @@ export abstract class AggregateRoot<ID extends Identifier> extends Entity<ID> {
   }
 
   /**
-   * Registra um manipulador para um tipo específico de evento.
+   * Registers a handler for a specific event type.
    *
-   * @param {string} event - Nome do evento a ser escutado.
-   * @param {(event: IDomainEvent) => void} handler - Função manipuladora do evento.
+   * @param {string} event - Name of the event to listen to.
+   * @param {(event: IDomainEvent) => void} handler - Function to handle the event.
    */
   public registerHandler(
     event: string,

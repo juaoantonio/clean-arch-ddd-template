@@ -14,10 +14,8 @@ async function bootstrap() {
     }),
   );
   const config = new DocumentBuilder()
-    .setTitle("Agile Backend API")
-    .setDescription("API para o projeto Agile Backend")
+    .setTitle("Clean Arch with DDD template")
     .setVersion("1.0")
-    .addTag("agile")
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("swagger", app, document);

@@ -4,6 +4,23 @@ import {
   ValidationOptions,
 } from "class-validator";
 
+/**
+ * Custom decorator to validate that the field is less than another specified field.
+ *
+ * @param {string} property - The field to compare against.
+ * @param {ValidationOptions} [validationOptions] - Additional validation options from `class-validator`.
+ * @returns {Function} A decorator function that registers the custom validator.
+ *
+ * @example
+ * ```typescript
+ * class Product {
+ *   @IsLessThan('maxPrice', { message: 'Min price should be less than max price' })
+ *   minPrice: number;
+ *
+ *   maxPrice: number;
+ * }
+ * ```
+ */
 export function IsLessThan(
   property: string,
   validationOptions?: ValidationOptions,
@@ -26,6 +43,23 @@ export function IsLessThan(
   };
 }
 
+/**
+ * Custom decorator to validate that the field is greater than another specified field.
+ *
+ * @param {string} property - The field to compare against.
+ * @param {ValidationOptions} [validationOptions] - Additional validation options from `class-validator`.
+ * @returns {Function} A decorator function that registers the custom validator.
+ *
+ * @example
+ * ```typescript
+ * class Product {
+ *   @IsGreaterThan('minPrice', { message: 'Max price should be greater than min price' })
+ *   maxPrice: number;
+ *
+ *   minPrice: number;
+ * }
+ * ```
+ */
 export function isGreaterThan(
   property: string,
   validationOptions?: ValidationOptions,
@@ -48,6 +82,23 @@ export function isGreaterThan(
   };
 }
 
+/**
+ * Custom decorator to validate that the field is less than or equal to another specified field.
+ *
+ * @param {string} property - The field to compare against.
+ * @param {ValidationOptions} [validationOptions] - Additional validation options from `class-validator`.
+ * @returns {Function} A decorator function that registers the custom validator.
+ *
+ * @example
+ * ```typescript
+ * class Product {
+ *   @IsLessThanOrEqual('maxPrice', { message: 'Min price should be less than or equal to max price' })
+ *   minPrice: number;
+ *
+ *   maxPrice: number;
+ * }
+ * ```
+ */
 export function isLessThanOrEqual(
   property: string,
   validationOptions?: ValidationOptions,
@@ -70,6 +121,23 @@ export function isLessThanOrEqual(
   };
 }
 
+/**
+ * Custom decorator to validate that the field is greater than or equal to another specified field.
+ *
+ * @param {string} property - The field to compare against.
+ * @param {ValidationOptions} [validationOptions] - Additional validation options from `class-validator`.
+ * @returns {Function} A decorator function that registers the custom validator.
+ *
+ * @example
+ * ```typescript
+ * class Product {
+ *   @IsGreaterThanOrEqual('minPrice', { message: 'Max price should be greater than or equal to min price' })
+ *   maxPrice: number;
+ *
+ *   minPrice: number;
+ * }
+ * ```
+ */
 export function isGreaterThanOrEqual(
   property: string,
   validationOptions?: ValidationOptions,
@@ -93,23 +161,23 @@ export function isGreaterThanOrEqual(
 }
 
 /**
- * Decorador personalizado para validar campos de um objeto usando uma função de validação fornecida.
+ * Custom decorator to validate object fields using a provided validation function.
  *
- * @param {(object: any) => boolean} validationFunction - Função que recebe o objeto completo e retorna um booleano indicando se é válido.
- * @param {ValidationOptions} [validationOptions] - Opções adicionais de validação do `class-validator`.
- * @returns {Function} Função decoradora que registra o validador personalizado.
+ * @param {(object: any) => boolean} validationFunction - A function that takes the entire object and returns a boolean indicating validity.
+ * @param {ValidationOptions} [validationOptions] - Additional validation options from `class-validator`.
+ * @returns {Function} A decorator function that registers the custom validator.
  *
  * @example
  * ```typescript
- * class Usuario {
- *   nome: string;
- *   sobrenome: string;
+ * class User {
+ *   firstName: string;
+ *   lastName: string;
  *
  *   @ValidateObjectFields(
- *     (obj) => obj.nome !== obj.sobrenome,
- *     { message: "O nome não pode ser igual ao sobrenome." }
+ *     (obj) => obj.firstName !== obj.lastName,
+ *     { message: "First name cannot be the same as last name." }
  *   )
- *   campoValidado: any;
+ *   validatedField: any;
  * }
  * ```
  */

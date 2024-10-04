@@ -1,24 +1,24 @@
 import { INotification, ToJsonOutput } from "./notification.interface";
 
 /**
- * Implementação da interface INotification para gerenciamento de notificações de erros.
+ * Implementation of the INotification interface for managing error notifications.
  */
 export class NotificationImplementation implements INotification {
   /**
-   * Mapa que armazena os erros, onde a chave é o campo ou mensagem de erro,
-   * e o valor é a mensagem ou lista de mensagens de erro.
+   * Map that stores errors, where the key is the field or error message,
+   * and the value is the message or list of error messages.
    */
   errors = new Map<string, string[] | string>();
 
   /**
-   * Adiciona um erro à notificação.
+   * Adds an error to the notification.
    *
-   * @param {string} error - Mensagem de erro.
-   * @param {string} [field] - Campo associado ao erro.
+   * @param {string} error - The error message.
+   * @param {string} [field] - The field associated with the error.
    */
   addError(error: string, field?: string): void {
     if (!field)
-      this.errors.set(error, error); // erro sem campo associado
+      this.errors.set(error, error); // error without an associated field
     else {
       const errors = (this.errors.get(field) ?? []) as string[];
       const errorNotExists = errors.indexOf(error) === -1;
@@ -28,10 +28,10 @@ export class NotificationImplementation implements INotification {
   }
 
   /**
-   * Define um erro ou lista de erros para um campo específico.
+   * Sets an error or list of errors for a specific field.
    *
-   * @param {string | string[]} error - Mensagem ou mensagens de erro.
-   * @param {string} [field] - Campo associado aos erros.
+   * @param {string | string[]} error - The error message(s).
+   * @param {string} [field] - The field associated with the errors.
    */
   setError(error: string | string[], field?: string): void {
     const isArrayOfErrors = Array.isArray(error);
@@ -50,27 +50,27 @@ export class NotificationImplementation implements INotification {
   }
 
   /**
-   * Copia erros de outra instância de NotificationImplementation.
+   * Copies errors from another instance of NotificationImplementation.
    *
-   * @param {NotificationImplementation} notification - Instância da qual os erros serão copiados.
+   * @param {NotificationImplementation} notification - Instance from which the errors will be copied.
    */
   copyErrors(notification: NotificationImplementation): void {
     notification.errors.forEach((value, field) => this.setError(value, field));
   }
 
   /**
-   * Verifica se existem erros na notificação.
+   * Checks if there are any errors in the notification.
    *
-   * @returns {boolean} True se houver erros, false caso contrário.
+   * @returns {boolean} True if there are errors, false otherwise.
    */
   hasErrors(): boolean {
     return this.errors.size > 0;
   }
 
   /**
-   * Converte os erros armazenados para um formato JSON.
+   * Converts the stored errors to a JSON format.
    *
-   * @returns {any} Array contendo as mensagens de erro.
+   * @returns {any} An array containing the error messages.
    */
   toJSON(): any {
     const errors: ToJsonOutput = [];

@@ -1,19 +1,19 @@
 import { ValueObject } from "../value-object";
 
 /**
- * Classe que representa um Objeto de Valor para datas.
- * Fornece métodos utilitários para manipulação e comparação de datas.
+ * Class representing a Value Object for dates.
+ * Provides utility methods for date manipulation and comparison.
  */
 export class DateVo extends ValueObject {
   /**
-   * Instância interna de Date.
+   * Internal Date instance.
    */
   private readonly date: Date;
 
   /**
-   * Construtor da classe DateVo.
+   * Constructor for the DateVo class.
    *
-   * @param {Date} date - Instância de Date a ser encapsulada.
+   * @param {Date} date - The Date instance to be encapsulated.
    */
   constructor(date: Date) {
     super();
@@ -21,46 +21,46 @@ export class DateVo extends ValueObject {
   }
 
   /**
-   * Cria uma nova instância de DateVo a partir de uma data ou string.
+   * Creates a new DateVo instance from a date or string.
    *
-   * @param {Date | string} date - Data ou string representando a data.
-   * @returns {DateVo} Nova instância de DateVo.
+   * @param {Date | string} date - Date or string representing the date.
+   * @returns {DateVo} New instance of DateVo.
    */
   static create(date: Date | string): DateVo {
     return new DateVo(new Date(date));
   }
 
   /**
-   * Cria uma nova instância de DateVo com a data atual.
+   * Creates a new DateVo instance with the current date.
    *
-   * @returns {DateVo} Nova instância de DateVo com a data atual.
+   * @returns {DateVo} New instance of DateVo with the current date.
    */
   static now(): DateVo {
     return new DateVo(new Date());
   }
 
   /**
-   * Obtém a instância de Date encapsulada.
+   * Gets the encapsulated Date instance.
    *
-   * @returns {Date} Instância de Date.
+   * @returns {Date} Date instance.
    */
   public getDate(): Date {
     return this.date;
   }
 
   /**
-   * Obtém a data formatada no padrão ISO (YYYY-MM-DD).
+   * Gets the date formatted in ISO standard (YYYY-MM-DD).
    *
-   * @returns {string} Data formatada.
+   * @returns {string} Formatted date.
    */
   public getDateFormatted(): string {
     return this.date.toISOString().split("T")[0];
   }
 
   /**
-   * Verifica se a data representada é a data atual.
+   * Checks if the represented date is today's date.
    *
-   * @returns {boolean} True se for hoje, false caso contrário.
+   * @returns {boolean} True if it's today, false otherwise.
    */
   public isToday(): boolean {
     const today = new Date();
@@ -72,18 +72,18 @@ export class DateVo extends ValueObject {
   }
 
   /**
-   * Verifica se a data representada está no passado.
+   * Checks if the represented date is in the past.
    *
-   * @returns {boolean} True se estiver no passado, false caso contrário.
+   * @returns {boolean} True if it's in the past, false otherwise.
    */
   public isInPast(): boolean {
     return this.date < new Date();
   }
 
   /**
-   * Verifica se a data representada está no futuro.
+   * Checks if the represented date is in the future.
    *
-   * @returns {boolean} True se estiver no futuro, false caso contrário.
+   * @returns {boolean} True if it's in the future, false otherwise.
    */
   public isInFuture(): boolean {
     return this.date > new Date();

@@ -2,9 +2,9 @@ import { Identifier } from "../identifier";
 
 /*
  * @interface IDomainEvent
- * @description Interface de evento de domínio.
- * @prop aggregateId: Identificador da entidade.
- * @prop occurredOn: Data de ocorrência do evento.
+ * @description Domain event interface.
+ * @prop aggregateId: Identifier of the entity.
+ * @prop occurredOn: Date when the event occurred.
  */
 export interface IDomainEvent {
   aggregateId: Identifier;

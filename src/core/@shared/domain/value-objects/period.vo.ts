@@ -2,24 +2,24 @@ import { ValueObject } from "../value-object";
 import { DateVo } from "./date.vo";
 
 /**
- * Classe que representa um período de tempo com data de início e fim.
- * Fornece métodos para validação e manipulação de períodos.
+ * Class representing a time period with start and end dates.
+ * Provides methods for validation and manipulation of periods.
  */
 export class Period extends ValueObject {
   /**
-   * Data de início do período.
+   * Start date of the period.
    */
   private readonly startDate: DateVo;
 
   /**
-   * Data de fim do período.
+   * End date of the period.
    */
   private readonly endDate: DateVo;
 
   /**
-   * Construtor da classe Period.
+   * Constructor for the Period class.
    *
-   * @param {{ startDate: DateVo; endDate: DateVo }} props - Propriedades do período.
+   * @param {{ startDate: DateVo; endDate: DateVo }} props - Properties of the period.
    */
   constructor(props: { startDate: DateVo; endDate: DateVo }) {
     super();
@@ -29,10 +29,10 @@ export class Period extends ValueObject {
   }
 
   /**
-   * Cria uma nova instância de Period e valida as datas fornecidas.
+   * Creates a new instance of Period and validates the provided dates.
    *
-   * @param {{ startDate: DateVo; endDate: DateVo }} props - Propriedades do período.
-   * @returns {Period} Nova instância de Period.
+   * @param {{ startDate: DateVo; endDate: DateVo }} props - Properties of the period.
+   * @returns {Period} New instance of Period.
    */
   static create(props: { startDate: DateVo; endDate: DateVo }): Period {
     const period = new Period(props);
@@ -41,45 +41,45 @@ export class Period extends ValueObject {
   }
 
   /**
-   * Valida o período para garantir que as datas sejam consistentes.
-   * Lança um erro se as datas forem inválidas.
+   * Validates the period to ensure the dates are consistent.
+   * Throws an error if the dates are invalid.
    */
   validate(): void {
     if (this.startDate.getDate() < new Date()) {
-      throw new Error("A data de início não pode estar no passado");
+      throw new Error("The start date cannot be in the past");
     }
 
     if (this.endDate.getDate() < new Date()) {
-      throw new Error("A data de fim não pode estar no passado");
+      throw new Error("The end date cannot be in the past");
     }
 
     if (this.startDate.getDate() > this.endDate.getDate()) {
-      throw new Error("A data de início não pode ser posterior à data de fim");
+      throw new Error("The start date cannot be after the end date");
     }
   }
 
   /**
-   * Obtém a data de início do período.
+   * Gets the start date of the period.
    *
-   * @returns {DateVo} Data de início.
+   * @returns {DateVo} Start date.
    */
   public getStartDate(): DateVo {
     return this.startDate;
   }
 
   /**
-   * Obtém a data de fim do período.
+   * Gets the end date of the period.
    *
-   * @returns {DateVo} Data de fim.
+   * @returns {DateVo} End date.
    */
   public getEndDate(): DateVo {
     return this.endDate;
   }
 
   /**
-   * Calcula o total de dias no período.
+   * Calculates the total number of days in the period.
    *
-   * @returns {number} Número total de dias.
+   * @returns {number} Total number of days.
    */
   public getTotalDays(): number {
     const diffTime = Math.abs(
@@ -91,10 +91,10 @@ export class Period extends ValueObject {
   }
 
   /**
-   * Verifica se uma data específica está dentro do período.
+   * Checks if a specific date is within the period.
    *
-   * @param {DateVo} date - Data a ser verificada.
-   * @returns {boolean} True se a data estiver dentro do período, false caso contrário.
+   * @param {DateVo} date - Date to be checked.
+   * @returns {boolean} True if the date is within the period, false otherwise.
    */
   public contains(date: DateVo): boolean {
     return (

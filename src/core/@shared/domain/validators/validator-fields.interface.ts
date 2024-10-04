@@ -1,8 +1,8 @@
 import { INotification } from "./notification.interface";
 
 /**
- * Tipo que representa os erros de campos.
- * Pode ser um objeto com campo e mensagens de erro ou uma string simples.
+ * Type representing field errors.
+ * Can be an object with a field and error messages or a simple string.
  */
 export type FieldsErrors =
   | {
@@ -11,15 +11,15 @@ export type FieldsErrors =
   | string;
 
 /**
- * Interface que define um validador de campos.
+ * Interface that defines a field validator.
  */
 export interface IValidatorFields {
   /**
-   * Realiza a validação dos dados e adiciona erros à notificação fornecida.
+   * Performs validation on the provided data and adds errors to the given notification.
    *
-   * @param {INotification} notification - Instância para registro dos erros.
-   * @param {any} data - Dados a serem validados.
-   * @param {string[]} [fields] - Lista opcional de campos a serem validados.
+   * @param {INotification} notification - Instance to record errors.
+   * @param {any} data - Data to be validated.
+   * @param {string[]} [fields] - Optional list of fields to be validated.
    */
   validate(notification: INotification, data: any, fields?: string[]): void;
 }

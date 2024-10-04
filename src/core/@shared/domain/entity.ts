@@ -3,45 +3,45 @@ import { INotification } from "./validators/notification.interface";
 import { NotificationImplementation } from "./validators/notification-implementation";
 
 /**
- * Classe base para todas as entidades do domínio.
+ * Base class for all domain entities.
  *
- * @template ID - Tipo do identificador que deve estender Identifier.
+ * @template ID - Type of the identifier which must extend Identifier.
  */
 export abstract class Entity<ID extends Identifier> {
   /**
-   * Instância de INotification para gerenciar notificações e erros da entidade.
+   * Instance of INotification to manage entity notifications and errors.
    */
   public readonly notification: INotification =
     new NotificationImplementation();
 
   /**
-   * Identificador único da entidade.
+   * Unique identifier of the entity.
    */
   private readonly id: ID;
 
   /**
-   * Cria uma nova instância de Entity.
+   * Creates a new instance of Entity.
    *
-   * @param {ID} id - Identificador único da entidade.
+   * @param {ID} id - Unique identifier of the entity.
    */
   constructor(id: ID) {
     this.id = id;
   }
 
   /**
-   * Obtém o identificador da entidade.
+   * Gets the identifier of the entity.
    *
-   * @returns {ID} Identificador da entidade.
+   * @returns {ID} Entity identifier.
    */
   public getId(): ID {
     return this.id;
   }
 
   /**
-   * Verifica se a entidade atual é igual a outra entidade.
+   * Checks if the current entity is equal to another entity.
    *
-   * @param {Entity<ID>} entity - Entidade a ser comparada.
-   * @returns {boolean} True se as entidades forem iguais, false caso contrário.
+   * @param {Entity<ID>} entity - Entity to be compared.
+   * @returns {boolean} True if the entities are equal, false otherwise.
    */
   public equals(entity: Entity<ID>): boolean {
     return this.id.equals(entity.id);

@@ -1,52 +1,52 @@
 /**
- * Interface para notificação de erros de validação.
+ * Interface for validation error notifications.
  */
 export interface INotification {
   /**
-   * Mapa que armazena os erros, onde a chave é o campo ou a mensagem de erro,
-   * e o valor é a mensagem ou um array de mensagens de erro.
+   * Map that stores errors, where the key is the field or error message,
+   * and the value is the message or an array of error messages.
    */
   errors: Map<string, string | string[]>;
 
   /**
-   * Adiciona um erro à notificação.
+   * Adds an error to the notification.
    *
-   * @param {string} error - Mensagem de erro.
-   * @param {string} [field] - Campo associado ao erro.
+   * @param {string} error - The error message.
+   * @param {string} [field] - The field associated with the error.
    */
   addError(error: string, field?: string): void;
 
   /**
-   * Define um erro ou lista de erros para um campo específico.
+   * Sets an error or list of errors for a specific field.
    *
-   * @param {string | string[]} error - Mensagem ou mensagens de erro.
-   * @param {string} [field] - Campo associado aos erros.
+   * @param {string | string[]} error - The error message(s).
+   * @param {string} [field] - The field associated with the errors.
    */
   setError(error: string | string[], field?: string): void;
 
   /**
-   * Verifica se existem erros na notificação.
+   * Checks if there are any errors in the notification.
    *
-   * @returns {boolean} True se houver erros, false caso contrário.
+   * @returns {boolean} True if there are errors, false otherwise.
    */
   hasErrors(): boolean;
 
   /**
-   * Copia erros de outra notificação.
+   * Copies errors from another notification.
    *
-   * @param {INotification} notifications - Notificação de onde os erros serão copiados.
+   * @param {INotification} notifications - The notification from which errors will be copied.
    */
   copyErrors(notifications: INotification): void;
 
   /**
-   * Converte os erros para um formato JSON.
+   * Converts errors to a JSON format.
    *
-   * @returns {ToJsonOutput} Array contendo as mensagens de erro.
+   * @returns {ToJsonOutput} An array containing the error messages.
    */
   toJSON(): ToJsonOutput;
 }
 
 /**
- * Tipo que define o formato de saída para o método toJSON.
+ * Type defining the output format for the toJSON method.
  */
 export type ToJsonOutput = Array<string | Record<string, string[]>>;

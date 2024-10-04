@@ -3,16 +3,16 @@ import { validateSync } from "class-validator";
 import { INotification } from "./notification.interface";
 
 /**
- * Classe abstrata que implementa a interface de validação de campos utilizando o class-validator.
- * Responsável por validar objetos de dados e adicionar erros à notificação caso existam.
+ * Abstract class that implements the field validation interface using class-validator.
+ * Responsible for validating data objects and adding errors to the notification if any exist.
  */
 export abstract class ClassValidatorFields implements IValidatorFields {
   /**
-   * Realiza a validação dos dados fornecidos e adiciona os erros encontrados à notificação.
+   * Performs validation on the provided data and adds any found errors to the notification.
    *
-   * @param {INotification} notification - Instância da notificação para armazenar os erros.
-   * @param {any} data - Dados que serão validados.
-   * @param {string[]} [fields] - Campos específicos que serão validados.
+   * @param {INotification} notification - Instance of the notification to store errors.
+   * @param {any} data - Data to be validated.
+   * @param {string[]} [fields] - Specific fields to be validated.
    */
   validate(notification: INotification, data: any, fields?: string[]): void {
     const errors = validateSync(data, {

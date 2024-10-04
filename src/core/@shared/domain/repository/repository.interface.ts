@@ -2,10 +2,10 @@ import { Identifier } from "../identifier";
 import { AggregateRoot } from "@core/@shared/domain/aggregate-root";
 
 /*
-@interface IRepository
-@description Interface de repositório genérica.
-@template AggregateId - Tipo do identificador do agregado raiz.
-@template A - Tipo do agregado raiz.
+ * @interface IRepository
+ * @description Generic repository interface.
+ * @template AggregateId - Type of the aggregate root identifier.
+ * @template A - Type of the aggregate root.
  */
 export interface IRepository<
   AggregateId extends Identifier,

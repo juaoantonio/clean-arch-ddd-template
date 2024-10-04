@@ -33,5 +33,5 @@ it("should not persist invalid entity", async () => {
 
   expect(async () => {
     await createExampleEntity.execute({ name: "Example Entity", age: 17 });
-  }).rejects.toThrowError("Entidade inválida");
+  }).rejects.toThrowError("Invalid entity");
 });

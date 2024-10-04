@@ -1,15 +1,15 @@
 import isEqual from "lodash/isEqual";
 
 /**
- * Classe abstrata que representa um Objeto de Valor (Value Object) no DDD.
- * Objetos de Valor são objetos imutáveis que são definidos por seus atributos.
+ * Abstract class representing a Value Object in DDD.
+ * Value Objects are immutable objects defined by their attributes.
  */
 export abstract class ValueObject {
   /**
-   * Verifica se o Objeto de Valor atual é igual a outro.
+   * Checks if the current Value Object is equal to another.
    *
-   * @param {this} vo - Outro objeto de valor a ser comparado.
-   * @returns {boolean} True se os objetos forem iguais, false caso contrário.
+   * @param {this} vo - Another value object to be compared.
+   * @returns {boolean} True if the objects are equal, false otherwise.
    */
   public equals(vo: this): boolean {
     if (vo === null || vo === undefined) {

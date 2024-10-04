@@ -1,11 +1,11 @@
-import { Entity } from "../entity";
-import { Identifier } from "../identifier";
+import { Entity } from "@core/@shared/domain/entity";
+import { Identifier } from "@core/@shared/domain/identifier";
 
 /*
  * @class EntityNotFoundError
  * @extends Error
- * @description Erro de domínio lançado quando uma entidade não é encontrada.
- * @constructor Recebe o id da entidade e a classe da entidade para criar a mensagem de erro informando os ids não encontrados.
+ * @description Domain error thrown when an entity is not found.
+ * @constructor Receives the entity ID and the entity class to create an error message indicating the not found IDs.
  */
 export class EntityNotFoundError extends Error {
   constructor(

@@ -2,20 +2,20 @@ import { Identifier } from "../identifier";
 import { v4 as uuidv4, validate as validateUuid } from "uuid";
 
 /**
- * Classe que representa um Identificador Universal Único (UUID) como um Objeto de Valor.
- * Fornece métodos para criação e validação de UUIDs.
+ * Class representing a Universally Unique Identifier (UUID) as a Value Object.
+ * Provides methods for UUID creation and validation.
  */
 export class Uuid extends Identifier {
   /**
-   * Valor do UUID.
+   * UUID value.
    */
   readonly value: string;
 
   /**
-   * Construtor protegido para criar uma instância de Uuid.
-   * Valida o UUID após a criação.
+   * Protected constructor to create a Uuid instance.
+   * Validates the UUID after creation.
    *
-   * @param {string} [value] - Valor do UUID. Se não fornecido, um novo UUID será gerado.
+   * @param {string} [value] - UUID value. If not provided, a new UUID will be generated.
    */
   protected constructor(value?: string) {
     super();
@@ -24,36 +24,36 @@ export class Uuid extends Identifier {
   }
 
   /**
-   * Cria uma nova instância de Uuid com um valor especificado.
+   * Creates a new Uuid instance with a specified value.
    *
-   * @param {string} value - Valor do UUID a ser utilizado.
-   * @returns {Uuid} Nova instância de Uuid.
+   * @param {string} value - The UUID value to use.
+   * @returns {Uuid} New Uuid instance.
    */
   public static create(value: string): Uuid {
     return new Uuid(value);
   }
 
   /**
-   * Cria uma nova instância de Uuid com um valor gerado aleatoriamente.
+   * Creates a new Uuid instance with a randomly generated value.
    *
-   * @returns {Uuid} Nova instância de Uuid.
+   * @returns {Uuid} New Uuid instance.
    */
   public static random(): Uuid {
     return new Uuid();
   }
 
   /**
-   * Obtém o valor do UUID.
+   * Gets the UUID value.
    *
-   * @returns {string} Valor do UUID.
+   * @returns {string} UUID value.
    */
   public getValue(): string {
     return this.value;
   }
 
   /**
-   * Valida o UUID para garantir que ele seja válido.
-   * Lança um erro se o UUID for inválido.
+   * Validates the UUID to ensure it is valid.
+   * Throws an error if the UUID is invalid.
    *
    * @private
    */
@@ -61,7 +61,7 @@ export class Uuid extends Identifier {
     const isValidUuid = validateUuid(this.value);
 
     if (!isValidUuid || !this.value) {
-      throw new Error("UUID inválido");
+      throw new Error("Invalid UUID");
     }
   }
 }

@@ -1,6 +1,7 @@
 /*
-@class InvalidArgumentError
-@description Erro de domínio lançado quando um argumento inválido é passado para um método.
+ * @class InvalidArgumentError
+ * @extends Error
+ * @description Domain error thrown when an invalid argument is passed to a method.
  */
 export class InvalidArgumentError extends Error {
   constructor(message: string) {
