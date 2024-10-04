@@ -20,10 +20,7 @@
     "noFallthroughCasesInSwitch": false,
     "types": ["vitest/globals"],
     "paths": {
-      "@infra/*": ["./src/infra/*"],
-      "@domain/*": ["./src/domain/*"],
-      "@application/*": ["./src/application/*"],
-      "@test/*": ["./test/*"]
+      "@core/*": ["src/core/*"]
     }
   },
   "exclude": ["./node_modules/*", "dist"]

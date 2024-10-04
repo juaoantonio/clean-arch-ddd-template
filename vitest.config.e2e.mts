@@ -7,13 +7,10 @@ export default defineConfig({
     globals: true,
     setupFiles: ["./test/vitest.setup.ts"],
     root: "./",
-    restoreMocks: true,
-    coverage: {
-      provider: "v8",
-      enabled: true,
-      reporter: ["html"],
-      exclude: ["**/*.d.ts", "**/*.interface.ts"],
-    },
+    include: ["src/**/*.e2e-spec.ts", "test/**/*.e2e-spec.ts"],
+    exclude: ["src/**/*.spec.ts", "test/**/*.spec.ts"],
+    testTimeout: 60000, // 60 seconds
+    hookTimeout: 60000, // 60 seconds
   },
 
   plugins: [
