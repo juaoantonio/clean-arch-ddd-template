@@ -1,0 +1,10 @@
+services:
+  db:
+    image: mysql:8-debian
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: database
+    ports:
+        - "3306:3306"
+    volumes:
+      - /var/lib/mysql
